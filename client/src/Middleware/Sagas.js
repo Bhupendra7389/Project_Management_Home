@@ -14,6 +14,7 @@ import invitedByProject from "./SagaMethods/InvitedByProject";
 import invitesById from "./SagaMethods/InvitesById";
 import invitesResponse from "./SagaMethods/InviteResponse";
 import commentOnTask from "./SagaMethods/CommentOnTask";
+import deleteAfterInvite from "./SagaMethods/DeleteAfterInvite";
 export default function* rootSaga() {
   yield all([
     yield takeLatest("DEVELOPERREGISTRATION", userRegistration),
@@ -30,6 +31,7 @@ export default function* rootSaga() {
     yield takeLatest("INVITEDBYPROJECT", invitedByProject),
     yield takeLatest("INVITESBYID", invitesById),
     yield takeLatest("INVITERESPONSE", invitesResponse),
-    yield takeLatest("COMMENT", commentOnTask)
+    yield takeLatest("COMMENT", commentOnTask),
+    yield takeLatest("DELETEAFTERINVITE", deleteAfterInvite)
   ]);
 }

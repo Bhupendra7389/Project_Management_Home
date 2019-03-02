@@ -16,3 +16,9 @@ export function inviteResponse(user) {
     user
   };
 }
+export function deleteAfterInvite(value) {
+  return {
+    type: "DELETEAFTERINVITE",
+    value
+  };
+}

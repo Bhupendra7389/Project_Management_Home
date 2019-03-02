@@ -22,4 +22,12 @@ router.get("/Get/InvitedByProject/:DeveloperId", async (req, res) => {
   });
   res.json(project);
 });
+router.post("/Delete/DeleteAfterInvite", async (req, res) => {
+  console.log(req.body);
+  const project = await Invite.deleteMany({
+    DeveloperId: req.body.DeveloperId,
+    ProjectId: req.body.ProjectId
+  });
+  res.json(project);
+});
 module.exports = router;

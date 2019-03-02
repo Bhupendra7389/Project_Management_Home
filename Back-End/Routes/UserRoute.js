@@ -62,4 +62,13 @@ router.post("/Login/UserLogin", (req, res) => {
     res.send("Error");
   }
 });
+router.get("/Get/ListDeveloper", async (req, res) => {
+  try {
+    const ListDeveloper = await User.find({ Position: "Developer" });
+
+    res.json(ListDeveloper);
+  } catch (error) {
+    res.status(500);
+  }
+});
 module.exports = router;

@@ -55,15 +55,7 @@ router.get("/Get/TaskList/:Project_Id", async (req, res) => {
     res.status(500);
   }
 });
-router.get("/Get/ListDeveloper", async (req, res) => {
-  try {
-    const ListDeveloper = await User.find({ Position: "Developer" });
 
-    res.json(ListDeveloper);
-  } catch (error) {
-    res.status(500);
-  }
-});
 router.get("/Edit/GetTaskById/:TaskId", async (req, res) => {
   try {
     const task = await Task.find({ _id: req.params.TaskId });
