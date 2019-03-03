@@ -70,8 +70,9 @@ class ListTask extends Component {
     await this.props.GetTaskById(this.state.Id);
   };
 
-  handleTaskDelete = e => {
-    this.props.DeleteTask(e.target.value);
+  handleTaskDelete = async e => {
+    await this.props.DeleteTask(e.target.value);
+    await this.props.ListTask(this.props.history);
   };
   handleClick = () => {
     var formData = {

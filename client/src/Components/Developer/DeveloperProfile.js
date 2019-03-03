@@ -17,10 +17,10 @@ class DeveloperProfile extends Component {
       DeveloperId: this.state.DeveloperId,
       DeveloperEmail: localStorage.getItem("Email")
     };
-    console.log(User);
 
     await this.props.InviteResponse(User);
     await this.props.DeleteAfterInvite(User);
+    await this.props.InvitedByProject(localStorage.getItem("_id"));
   };
   closeSubModal = () => {
     this.setState({ subModelShow: false });

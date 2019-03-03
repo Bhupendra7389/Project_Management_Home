@@ -1,12 +1,26 @@
 import React, { Component } from "react";
+import Noty from "noty";
+import "../../../node_modules/noty/lib/noty.css";
+import "../../../node_modules/noty/lib/themes/bootstrap-v4.css";
 class DeveloperLogin extends Component {
   constructor() {
     super();
     this.state = {
       Email: "",
-      Password: ""
+      Password: "",
+      subscribe: ""
     };
   }
+  showNotification = user => {
+    new Noty({
+      theme: "bootstrap-v4",
+      type: user.type,
+      layout: "topRight",
+      text: user.data,
+      timeout: 3000
+    }).show();
+  };
+
   onChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -16,6 +30,7 @@ class DeveloperLogin extends Component {
     const formData = {
       Email: this.state.Email,
       Password: this.state.Password,
+      subscription: this.state.subscribe,
       history: this.props.history
     };
     this.props.DeveloperLogin(formData);
@@ -23,7 +38,18 @@ class DeveloperLogin extends Component {
       Email: "",
       Password: ""
     });
+
+    this.showNotification({ data: " Logged-In Successful", type: "success" });
   };
+  // componentDidMount = async () => {
+  //   const subscription = await registration.pushManager.subscribe({
+  //     userVisibleOnly: true,
+  //     // The `urlBase64ToUint8Array()` function is the same as in
+  //     // https://www.npmjs.com/package/web-push#using-vapid-key-for-applicationserverkey
+  //     applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
+  //   });
+  //   this.setState({ subscribe: subscription });
+  // };
 
   render() {
     return (

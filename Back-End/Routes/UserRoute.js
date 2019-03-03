@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var User = require("../Models/Register");
 const jwt = require("jsonwebtoken");
+// const webpush = require("web-push");
 require("mongoose");
 const secretKey = "AdminUser";
 router.post("/Register/UserRegistration", async (req, res) => {
@@ -51,7 +52,9 @@ router.post("/Login/UserLogin", (req, res) => {
               token: token,
               user: user
             };
-
+            // webpush.sendNotification(subscription, payload).catch(error => {
+            //   console.error(error.stack);
+            // });
             res.send(developer);
           }
         });
