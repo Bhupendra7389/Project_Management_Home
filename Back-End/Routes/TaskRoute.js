@@ -4,11 +4,11 @@ const Task = require("../Models/Projects/Task");
 require("mongoose");
 router.put("/Add/Comment/:TaskId", async (req, res) => {
   try {
-    await Task.findOneAndUpdate(
+    let user = await Task.findOneAndUpdate(
       { _id: req.params.TaskId },
       { $push: { Task_Comment: req.body.Comment } }
     );
-    res.json({ id: req.params.TaskId });
+    res.json(user);
   } catch {
     console.log("Error");
   }
@@ -74,7 +74,7 @@ router.patch("/Edit/EditTask/:TaskId", async (req, res) => {
       Total_Developers,
       Task_Discription
     } = await req.body;
-    await Task.findByIdAndUpdate(
+    let user = await Task.findByIdAndUpdate(
       {
         _id: req.params.TaskId
       },
@@ -87,14 +87,15 @@ router.patch("/Edit/EditTask/:TaskId", async (req, res) => {
       }
     );
 
-    res.json("Done");
+    res.json(user);
   } catch (error) {
     res.status(500);
   }
 });
 router.delete("/Delete/DeleteTask/:Id", async (req, res) => {
   try {
-    await Task.findByIdAndDelete({ _id: req.params.Id });
+    let user = await Task.findByIdAndDelete({ _id: req.params.Id });
+    res.send(user);
   } catch (error) {}
 });
 module.exports = router;

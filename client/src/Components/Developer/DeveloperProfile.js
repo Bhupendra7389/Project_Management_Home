@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { Modal } from "react-bootstrap";
-
+import Noty from "noty";
+import "../../../node_modules/noty/lib/noty.css";
+import "../../../node_modules/noty/lib/themes/bootstrap-v4.css";
 class DeveloperProfile extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +12,16 @@ class DeveloperProfile extends Component {
       DeveloperId: ""
     };
   }
+  showNotification = user => {
+    new Noty({
+      theme: "bootstrap-v4",
+      type: user.type,
+      layout: "topRight",
+      text: user.data,
+      timeout: 3000
+    }).show();
+  };
+
   handleResponse = async e => {
     this.setState({ subModelShow: false });
     const User = {
@@ -33,6 +45,12 @@ class DeveloperProfile extends Component {
   };
   handleLogout = () => {
     localStorage.clear();
+
+    this.showNotification({
+      data: "Logged-Out",
+      type: "success"
+    });
+
     this.props.history.push("/DeveloperLog");
   };
   componentWillMount = () => {

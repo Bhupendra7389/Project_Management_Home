@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import Noty from "noty";
-import "../../../node_modules/noty/lib/noty.css";
-import "../../../node_modules/noty/lib/themes/bootstrap-v4.css";
+
 class DeveloperLogin extends Component {
   constructor() {
     super();
@@ -11,15 +9,6 @@ class DeveloperLogin extends Component {
       subscribe: ""
     };
   }
-  showNotification = user => {
-    new Noty({
-      theme: "bootstrap-v4",
-      type: user.type,
-      layout: "topRight",
-      text: user.data,
-      timeout: 3000
-    }).show();
-  };
 
   onChange = e => {
     this.setState({
@@ -38,8 +27,6 @@ class DeveloperLogin extends Component {
       Email: "",
       Password: ""
     });
-
-    this.showNotification({ data: " Logged-In Successful", type: "success" });
   };
   // componentDidMount = async () => {
   //   const subscription = await registration.pushManager.subscribe({
