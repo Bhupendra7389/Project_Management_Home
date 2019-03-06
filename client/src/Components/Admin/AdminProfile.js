@@ -17,13 +17,14 @@ class AdminProfile extends Component {
       type: user.type,
       layout: "topRight",
       text: user.data,
-      timeout: 3000
+      timeout: 1000
     }).show();
   };
+
   handleLogout = () => {
     localStorage.clear();
     this.showNotification({
-      data: "Logged-Out",
+      data: "Logged-Out Successful",
       type: "success"
     });
     this.props.history.push("/DeveloperLog");
@@ -38,26 +39,30 @@ class AdminProfile extends Component {
         <div className="container">
           <nav className="nav justify-content-end nav nav-tabs">
             <div className="nav">
-              <li className="nav item">
-                <Link to="/AdminProfile" className="nav-link active">
+              <li className="nav justify-content-end nav nav-tabs">
+                <Link
+                  to="/AdminProfile"
+                  className="nav-link active btn-primary"
+                >
                   Profile
                 </Link>
               </li>
-              ...
-              <li className="nav item">
-                <Link to="/Projects" className="nav-link active">
+              <li className="nav ml-2 justify-content-end nav nav-tabs">
+                <Link to="/Projects" className="nav-link active btn-primary">
                   Add-Projects
                 </Link>
               </li>
-              ...
-              <li className="nav item">
-                <Link to="/ProjectList" className="nav-link active">
+              <li className="nav ml-2 justify-content-end nav nav-tabs">
+                <Link to="/ProjectList" className="nav-link active btn-primary">
                   Projects
                 </Link>
               </li>
-              ...
-              <li className="nav item">
-                <button onClick={this.handleLogout} className="nav-link active">
+
+              <li className="nav ml-2 justify-content-end nav nav-tabs">
+                <button
+                  onClick={this.handleLogout}
+                  className="nav-link active btn-primary"
+                >
                   Log-Out
                 </button>
               </li>

@@ -4,14 +4,16 @@ import {
   listProject,
   listDeveloper,
   inviteDeveloper,
-  addTask
+  addTask,
+  projectStatus
 } from "../Actions/ListProjectActions";
 const mapDispatchToProps = dispatch => {
   return {
     ListProject: () => dispatch(listProject()),
     ListDeveloper: () => dispatch(listDeveloper()),
     InviteDeveloper: Ids => dispatch(inviteDeveloper(Ids)),
-    AddTask: value => dispatch(addTask(value))
+    AddTask: Value => dispatch(addTask(Value)),
+    ProjectStatus: ProjectStatus => dispatch(projectStatus(ProjectStatus))
   };
 };
 const mapStateToProps = state => {

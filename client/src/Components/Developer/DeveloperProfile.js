@@ -9,7 +9,7 @@ class DeveloperProfile extends Component {
     super(props);
     this.state = {
       Name: "",
-      DeveloperId: ""
+      Id: ""
     };
   }
   showNotification = user => {
@@ -18,21 +18,20 @@ class DeveloperProfile extends Component {
       type: user.type,
       layout: "topRight",
       text: user.data,
-      timeout: 3000
+      timeout: 1000
     }).show();
   };
 
   handleResponse = async e => {
-    this.setState({ subModelShow: false });
     const User = {
       ProjectId: e.target.value,
-      DeveloperId: this.state.DeveloperId,
+      DeveloperId: this.state.Id,
       DeveloperEmail: localStorage.getItem("Email")
     };
-
     await this.props.InviteResponse(User);
-    await this.props.DeleteAfterInvite(User);
+    await this.props.DeleteDeveloperInvite(User);
     await this.props.InvitedByProject(localStorage.getItem("_id"));
+    await this.setState({ subModelShow: false });
   };
   closeSubModal = () => {
     this.setState({ subModelShow: false });
@@ -45,19 +44,18 @@ class DeveloperProfile extends Component {
   };
   handleLogout = () => {
     localStorage.clear();
-
     this.showNotification({
-      data: "Logged-Out",
+      data: "Logged-Out Successful",
       type: "success"
     });
-
     this.props.history.push("/DeveloperLog");
   };
+
   componentWillMount = () => {
     this.props.InvitedByProject(localStorage.getItem("_id"));
   };
   handleInvites = e => {
-    this.setState({ subModelShow: true, DeveloperId: e.target.id });
+    this.setState({ subModelShow: true, Id: e.target.id });
     this.props.InvitesById(e.target.value);
   };
 
@@ -70,31 +68,32 @@ class DeveloperProfile extends Component {
         <div className="container">
           <nav className="nav justify-content-end nav nav-tabs">
             <div className="nav">
-              <li className="nav item">
+              <li className="nav ml-2 justify-content-end nav nav-tabs">
                 <Link
                   to="/DeveloperProfile"
-                  className="nav-link active btn-success"
+                  className="nav-link active btn-primary"
                 >
                   Profile
                 </Link>
               </li>
-              ...
-              <li className="nav item">
-                <Link to="/ProjectList" className="nav-link active btn-success">
+
+              <li className="nav ml-2 justify-content-end nav nav-tabs">
+                <Link to="/ProjectList" className="nav-link active btn-primary">
                   Projects
                 </Link>
               </li>
-              ...
-              <li className="nav item">
+
+              <li className="nav ml-2 justify-content-end nav nav-tabs">
                 <button
                   onClick={this.handleLogout}
-                  className="nav-link active btn-success"
+                  className="nav-link active btn-primary"
                 >
                   Log-Out
                 </button>
               </li>
             </div>
           </nav>
+
           <h3>Profile</h3>
 
           <div className="row">
@@ -140,7 +139,7 @@ class DeveloperProfile extends Component {
                       >
                         ACCEPT
                       </button>
-                      ...
+
                       <button
                         className="badge btn-danger"
                         onClick={this.closeSubModal}
@@ -155,12 +154,11 @@ class DeveloperProfile extends Component {
                 {this.props.Projects.length &&
                   this.props.Projects.map(postData => (
                     <ul key={postData._id}>
-                      <div>
+                      <div className="badge btn-danger">
                         <button
                           value={postData.ProjectId}
                           id={postData.DeveloperId}
                           onClick={this.handleInvites}
-                          className="badge btn-danger"
                         >
                           ONPROJECT
                         </button>

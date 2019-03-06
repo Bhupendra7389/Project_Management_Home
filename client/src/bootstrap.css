@@ -414,6 +414,21 @@
     font-weight: 300;
     line-height: 1.2;
   }
+  body, html {
+  height: 100%;
+}
+.bgBackGround {
+  /* The image used */
+  background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
   
   .display-3 {
     font-size: 4.5rem;
@@ -445,6 +460,21 @@
     padding: 0.2em;
     background-color: #fcf8e3;
   }
+  body, html {
+  height: 100%;
+}
+.bgimage {
+  /* The image used */
+  background-image: url('https://mdbootstrap.com/img/Photos/Others/images/91.jpg');
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
   
   .list-unstyled {
     padding-left: 0;
@@ -3897,7 +3927,7 @@
   }
   
   .nav-tabs {
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: 1px solid #2c6196;
   }
   
   .nav-tabs .nav-item {
@@ -3911,7 +3941,7 @@
   }
   
   .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
-    border-color: #e9ecef #e9ecef #dee2e6;
+    border-color: #1c5083 #5199e2 #2d6092;
   }
   
   .nav-tabs .nav-link.disabled {

@@ -16,9 +16,9 @@ export function inviteResponse(user) {
     user
   };
 }
-export function deleteAfterInvite(value) {
+export function deleteDeveloperInvite(user) {
   return {
-    type: "DELETEAFTERINVITE",
-    value
+    type: "DELETEDEVELOPERINVITE",
+    user
   };
 }

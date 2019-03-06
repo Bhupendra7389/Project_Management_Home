@@ -6,7 +6,8 @@ const Task = new mongoose.Schema({
   Submission_Date: { type: String, required: true },
   Total_Developers: { type: String, required: true },
   Task_Discription: { type: String, required: true },
-  Project_Id: "",
+  Project_Id: { type: String },
+  Task_Status: { type: String, default: "In-Processing" },
   Task_Comment: [{ type: String }]
 });
 

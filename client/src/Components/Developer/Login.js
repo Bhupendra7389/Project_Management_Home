@@ -5,8 +5,7 @@ class DeveloperLogin extends Component {
     super();
     this.state = {
       Email: "",
-      Password: "",
-      subscribe: ""
+      Password: ""
     };
   }
 
@@ -19,7 +18,6 @@ class DeveloperLogin extends Component {
     const formData = {
       Email: this.state.Email,
       Password: this.state.Password,
-      subscription: this.state.subscribe,
       history: this.props.history
     };
     this.props.DeveloperLogin(formData);
@@ -28,15 +26,6 @@ class DeveloperLogin extends Component {
       Password: ""
     });
   };
-  // componentDidMount = async () => {
-  //   const subscription = await registration.pushManager.subscribe({
-  //     userVisibleOnly: true,
-  //     // The `urlBase64ToUint8Array()` function is the same as in
-  //     // https://www.npmjs.com/package/web-push#using-vapid-key-for-applicationserverkey
-  //     applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
-  //   });
-  //   this.setState({ subscribe: subscription });
-  // };
 
   render() {
     return (

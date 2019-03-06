@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import ListTask from "../Components/Project/ListTask";
 import { addTask } from "../Actions/ListProjectActions";
+import { invitesById } from "../Actions/DeveloperProfile";
 import {
   listTask,
   editTask,
@@ -15,13 +16,15 @@ const mapDispatchToProps = dispatch => {
     EditTask: edit => dispatch(editTask(edit)),
     DeleteTask: id => dispatch(deleteTask(id)),
     GetTaskById: id => dispatch(getTaskById(id)),
-    Comment: post => dispatch(comment(post))
+    Comment: post => dispatch(comment(post)),
+    InvitesById: id => dispatch(invitesById(id))
   };
 };
 const mapStateToProps = state => {
   return {
     getListTask: state.TaskList,
-    getTask: state.Task
+    getTask: state.Task,
+    getProject: state.Projects
   };
 };
 export default connect(

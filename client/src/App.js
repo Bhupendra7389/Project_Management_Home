@@ -11,6 +11,9 @@ import AdminProfile from "./Container/AdiminProfile";
 import ListProject from "./Container/ListProject";
 import DeveloperProfile from "./Container/DeveloperProfile";
 import ListTask from "./Container/ListTask";
+import DifferentLabelProjects from "./Container/DifferentLabelProjects";
+import DifferentLabelTask from "./Container/DifferentLabelTask";
+
 class App extends Component {
   render() {
     return (
@@ -19,7 +22,7 @@ class App extends Component {
           <nav className="nav bg-dark">
             <li className="nav-item">
               <Link to="/Home" className="nav-link active">
-                Home
+                <b>HOME</b>
               </Link>
             </li>
           </nav>
@@ -29,10 +32,11 @@ class App extends Component {
             <Route path="/Home" component={Home} />
             <Route path="/DeveloperReg" component={DeveloperRegistration} />
             <Route path="/DeveloperLog" component={DeveloperLogin} />
-
             <Route path="/AdminProfile" component={AdminProfile} />
             <Route path="/ProjectList" component={ListProject} />
             <Route path="/TaskList" component={ListTask} />
+            <Route path="/ProjectsLabel" component={DifferentLabelProjects} />
+            <Route path="/TasksLabel" component={DifferentLabelTask} />
           </Switch>
         </div>
       </div>

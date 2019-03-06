@@ -2,8 +2,6 @@ var express = require("express");
 var router = express.Router();
 var User = require("../Models/Register");
 const jwt = require("jsonwebtoken");
-// const webpush = require("web-push");
-require("mongoose");
 const secretKey = "AdminUser";
 router.post("/Register/UserRegistration", async (req, res) => {
   try {
@@ -26,6 +24,15 @@ router.post("/Register/UserRegistration", async (req, res) => {
     });
   } catch (error) {
     console.error(500);
+  }
+});
+router.get("/Get/ListDeveloper", async (req, res) => {
+  try {
+    const ListDeveloper = await User.find({ Position: "Developer" });
+
+    res.json(ListDeveloper);
+  } catch (error) {
+    res.status(500);
   }
 });
 router.post("/Login/UserLogin", (req, res) => {
@@ -52,9 +59,7 @@ router.post("/Login/UserLogin", (req, res) => {
               token: token,
               user: user
             };
-            // webpush.sendNotification(subscription, payload).catch(error => {
-            //   console.error(error.stack);
-            // });
+
             res.send(developer);
           }
         });
@@ -63,15 +68,6 @@ router.post("/Login/UserLogin", (req, res) => {
   } catch (error) {
     res.status(401);
     res.send("Error");
-  }
-});
-router.get("/Get/ListDeveloper", async (req, res) => {
-  try {
-    const ListDeveloper = await User.find({ Position: "Developer" });
-
-    res.json(ListDeveloper);
-  } catch (error) {
-    res.status(500);
   }
 });
 module.exports = router;

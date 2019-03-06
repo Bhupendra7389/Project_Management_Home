@@ -1,6 +1,5 @@
 import axios from "axios";
 import { put } from "redux-saga/effects";
-
 export default function* listTask(action) {
   if (
     localStorage.getItem("Project_Id") !== "undefined" &&

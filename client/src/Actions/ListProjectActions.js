@@ -10,9 +10,15 @@ export function inviteDeveloper(Ids) {
     Ids
   };
 }
-export function addTask(value) {
+export function addTask(Value) {
   return {
     type: "ADDTASK",
-    value
+    Value
+  };
+}
+export function projectStatus(ProjectStatus) {
+  return {
+    type: "PROJECTSTATUS",
+    ProjectStatus
   };
 }

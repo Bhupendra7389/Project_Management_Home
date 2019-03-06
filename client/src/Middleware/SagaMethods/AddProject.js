@@ -3,12 +3,12 @@ import Noty from "noty";
 import "../../../node_modules/noty/lib/noty.css";
 import "../../../node_modules/noty/lib/themes/bootstrap-v4.css";
 export default function* addProject(action) {
-  let user = yield axios.post("/Add/Project", action.project).then(res => {
+  let project = yield axios.post("/Add/Project", action.project).then(res => {
     return res.data;
   });
-  if (user) {
+  if (project) {
     yield showNotification({
-      data: " Project Added Succesfully",
+      data: "Project Added Successfully",
       type: "success"
     });
   }
@@ -19,6 +19,6 @@ function* showNotification(user) {
     type: user.type,
     layout: "topRight",
     text: user.data,
-    timeout: 3000
+    timeout: 1000
   }).show();
 }
